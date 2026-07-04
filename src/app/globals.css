@@ -1,26 +1,158 @@
 @import "tailwindcss";
 
+/* ── Design Tokens ── */
+@theme {
+  /* Typography */
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-playfair);
+
+  /* Core palette */
+  --color-ngo-primary: #111111;
+  --color-ngo-primary-light: #2D2A26;
+  --color-ngo-secondary: #D4A853;
+  --color-ngo-secondary-light: #E8B931;
+  --color-ngo-secondary-subtle: #FDF6E3;
+
+  /* Warm neutrals */
+  --color-ngo-dark: #0D0D0D;
+  --color-ngo-charcoal: #1A1A1A;
+  --color-ngo-warm-gray: #3D3832;
+  --color-ngo-cream: #FFF8F0;
+  --color-ngo-stone: #F5F0EB;
+  --color-ngo-muted: #5A5347;
+  --color-ngo-muted-light: #8A8279;
+
+  /* Functional */
+  --color-ngo-background: #FFFBF5;
+  --color-ngo-foreground: #111111;
+  --color-ngo-border: #E8E0D8;
+  --color-ngo-border-light: #F0EBE5;
+  --color-ngo-card: #FFFFFF;
+  --color-ngo-card-hover: #FFFDF9;
+}
+
+/* ── Base ── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #FFFBF5;
+  --foreground: #111111;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+/* ── Glassmorphism ── */
+.glass-warm {
+  background: rgba(255, 251, 245, 0.82);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border-bottom: 1px solid rgba(212, 168, 83, 0.12);
+}
+
+.glass-dark {
+  background: rgba(17, 17, 17, 0.85);
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  border: 1px solid rgba(212, 168, 83, 0.15);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(232, 224, 216, 0.6);
+}
+
+/* ── Animations ── */
+@keyframes gold-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.animate-gold-shimmer {
+  background: linear-gradient(
+    110deg,
+    #D4A853 0%,
+    #E8B931 25%,
+    #F5E6B8 50%,
+    #E8B931 75%,
+    #D4A853 100%
+  );
+  background-size: 200% auto;
+  animation: gold-shimmer 3s linear infinite;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.7s ease-out forwards;
+}
+
+/* ── Gold Gradient Button ── */
+.btn-gold {
+  background: linear-gradient(135deg, #D4A853 0%, #E8B931 50%, #D4A853 100%);
+  background-size: 200% auto;
+  color: #111111;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(212, 168, 83, 0.25);
+}
+
+.btn-gold:hover {
+  background-position: right center;
+  box-shadow: 0 6px 24px rgba(212, 168, 83, 0.4);
+  transform: translateY(-2px);
+}
+
+/* ── Gold border glow ── */
+.gold-glow {
+  box-shadow: 0 0 0 1px rgba(212, 168, 83, 0.15),
+              0 8px 32px rgba(212, 168, 83, 0.08);
+}
+
+.gold-glow:hover {
+  box-shadow: 0 0 0 1px rgba(212, 168, 83, 0.3),
+              0 12px 40px rgba(212, 168, 83, 0.15);
+}
+
+/* ── Smooth scroll ── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── Selection color ── */
+::selection {
+  background-color: rgba(212, 168, 83, 0.25);
+  color: #111111;
 }
