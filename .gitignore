@@ -48,3 +48,5 @@ ENV/
 # temporary parser assets and files
 /parsed_*.txt
 /parse_html.js
+
+.vercel

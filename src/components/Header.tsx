@@ -11,6 +11,7 @@ const NAV_LINKS = [
   { name: "Home", href: "/" },
   { name: "Core Team", href: "/core-team" },
   { name: "Media Coverage", href: "/media-coverage" },
+  { name: "Social", href: "/social" },
 ];
 
 export default function Header() {

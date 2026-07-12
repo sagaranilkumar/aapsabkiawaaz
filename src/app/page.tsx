@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
+import { themeFor } from "@/utils/themeMapper";
 
 /* ── Animation Variants ── */
 const fadeIn: Variants = {
@@ -88,6 +89,7 @@ const IMPACT_STATS = [
 const CAMPAIGNS = [
   {
     icon: Shield,
+    initiative: "road-safety",
     title: "Road Safety & Helmets",
     description:
       "Donated 400 helmets to home guards in Visakhapatnam and Guntur under the leadership of regional police commissioners and directors of prosecutions.",
@@ -96,6 +98,7 @@ const CAMPAIGNS = [
   },
   {
     icon: Heart,
+    initiative: "healthcare",
     title: "Free Medical Camps",
     description:
       "Organized free health camp at AR Grounds, Vijayawada, offering specialized medical consultations and free medication to home guards and families.",
@@ -104,6 +107,7 @@ const CAMPAIGNS = [
   },
   {
     icon: Droplets,
+    initiative: "water",
     title: "Clean Drinking Water",
     description:
       "Donated clean water dispensers to MVP Police Station, Visakhapatnam MRO Office, and multiple local Primary Health Centers to benefit visiting citizens.",
@@ -112,6 +116,7 @@ const CAMPAIGNS = [
   },
   {
     icon: Trophy,
+    initiative: "sports",
     title: "Empowering Athletes",
     description:
       "Celebrating our sponsored local talents: Bahrain Boccia Silver medal and Malaysia Weightlifting Bronze medal (Sai Shakthi) representing India.",
@@ -505,7 +510,7 @@ export default function Home() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ngo-primary/40 to-transparent" />
                   <div className="absolute top-4 left-4">
-                    <div className="bg-white/90 backdrop-blur-sm p-2.5 rounded-xl text-ngo-secondary shadow-sm">
+                    <div className={`bg-white/90 backdrop-blur-sm p-2.5 rounded-xl shadow-sm ${themeFor(campaign.initiative).accentText}`}>
                       <campaign.icon size={22} />
                     </div>
                   </div>

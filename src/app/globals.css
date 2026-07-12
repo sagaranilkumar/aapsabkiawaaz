@@ -22,6 +22,18 @@
   --color-ngo-muted: #5A5347;
   --color-ngo-muted-light: #8A8279;
 
+  /* Mission-mapped accents (WCAG-AA badge text on white / -soft fills) */
+  --color-road: #E63946;
+  --color-road-soft: #FDE7E9;
+  --color-health: #0F9D74;
+  --color-health-soft: #E4F5EF;
+  --color-sports: #C2570B;
+  --color-sports-soft: #FDECD9;
+  --color-civic: #3A6EA5;
+  --color-civic-soft: #E7EFF8;
+  --color-water: #0081CF;
+  --color-water-soft: #E0F2FE;
+
   /* Functional */
   --color-ngo-background: #FFFBF5;
   --color-ngo-foreground: #111111;

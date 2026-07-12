@@ -1,218 +1,128 @@
 import { Metadata } from "next";
-import { Mail } from "lucide-react";
-
-// Inline custom SVGs since the brand icons were removed from standard lucide-react in newer versions
-const LinkedinIcon = ({ size = 18 }: { size?: number }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="lucide lucide-linkedin"
-  >
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-    <rect width="4" height="12" x="2" y="9" />
-    <circle cx="4" cy="4" r="2" />
-  </svg>
-);
-
-const TwitterIcon = ({ size = 18 }: { size?: number }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="lucide lucide-twitter"
-  >
-    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
-  </svg>
-);
+import CoreTeamClient, { Member } from "@/components/CoreTeamClient";
+import JsonLd from "@/components/JsonLd";
+import { SITE_NAME, SITE_URL } from "@/utils/seo";
 
 export const metadata: Metadata = {
-  title: "Core Team | Aap Sab Ki Awaaz",
-  description: "Meet the dedicated individuals driving change at Aap Sab Ki Awaaz.",
+  title: "Core Team",
+  description:
+    "Meet the leadership and advisory board of Aap Sab Ki Awaaz — decorated defence officers, jurists, physicians, and civic leaders driving community change.",
+  alternates: { canonical: "/core-team" },
 };
 
-// Warm gradient palettes for avatar placeholders
-const AVATAR_GRADIENTS = [
-  "linear-gradient(135deg, #D4A853 0%, #C4922E 50%, #B8860B 100%)",       // gold → deep gold
-  "linear-gradient(135deg, #2D2A26 0%, #3D3832 50%, #5A5347 100%)",       // charcoal → warm gray
-  "linear-gradient(135deg, #B8860B 0%, #D4A853 50%, #E8B931 100%)",       // amber → gold
-  "linear-gradient(135deg, #5A5347 0%, #3D3832 50%, #2D2A26 100%)",       // warm gray → charcoal
-  "linear-gradient(135deg, #D4A853 0%, #E8B931 50%, #D4A853 100%)",       // gold shimmer
-];
-
-const TEAM_MEMBERS = [
+/**
+ * Photos are self-hosted from /public/images/team/.
+ * Download the 9 source JPGs (see project notes) into that folder with the
+ * matching slug filenames. Members without a photo fall back to gradient initials.
+ */
+const TEAM_MEMBERS: Member[] = [
   {
     name: "Lt Gen K S Rao",
+    credentials: "PVSM, SC, SM · Arjuna Awardee",
+    role: "Former DG, Border Roads Organisation",
+    bio: "Former Director General of the Border Roads Organisation (DGBR). A decorated Army veteran honoured with the PVSM, SC and SM, and an Arjuna Awardee for sporting distinction.",
+    photo: "/images/team/ks-rao.jpg",
     initials: "KR",
-    role: "PVSM, SC, SM, Arjuna Awardee",
-    bio: "Former DG Border Roads Organisation (DGBR)",
   },
   {
     name: "Rear Admiral Sreenivas Ratnam",
+    credentials: "VSM (Retd)",
+    role: "Former Addl DG Acquisition Tech, MoD",
+    bio: "Retired from the Indian Navy in September 2022 after a distinguished innings of over 35 years. His notable appointments include Additional Director General Acquisition Tech (Maritime & Systems) in the Ministry of Defence, General Manager (Refits) of Naval Dockyard Visakhapatnam, and Commodore Superintendent of Naval Ship Repair Yard, Port Blair.",
+    photo: "/images/team/sreenivas-ratnam.jpg",
     initials: "SR",
-    role: "Vsm (Retd)",
-    bio: "Retired from the Indian Navy in September 2022 after a distinguished innings of over 35 years. Notable appointments include Addl Director General Acquisition Tech.",
+  },
+  {
+    name: "Shri. Bhavani Parsad",
+    role: "Former Chief Justice, High Court of AP",
+    bio: "Former Chief Justice of the High Court of the combined state of Andhra Pradesh. Grandson of Grandhi Venkata Reddy Naidu — Former Minister for Law, Courts, Prisons and Endowments in the first cabinet of Andhra Pradesh — and son of Grandhi Kesava Rama Murthy, a leading advocate for 54 years at Narasapur, West Godavari. Born 09-04-1951; educated at Narasapur, Andhra Loyola College (Vijayawada) and Andhra University, Waltair.",
+    photo: "/images/team/bhavani-parsad.jpg",
+    initials: "BP",
+    link: { label: "Profile", url: "https://tshc.gov.in/retjudges/gbpj.html" },
   },
   {
     name: "Shri. M. V. Krishna Rao",
+    credentials: "IPS",
+    role: "Former Commissioner of Police, Hyderabad",
+    bio: "A highly respected police officer who joined the Indian Police Service in 1974 and held various notable positions, including Commissioner of Police in Hyderabad and Director of the AP Police Academy.",
+    photo: "/images/team/mv-krishna-rao.jpg",
     initials: "KR",
-    role: "IPS",
-    bio: "A highly respected police officer joined the Indian Police Service in 1974. Held positions including Commissioner of Police in Hyderabad and Director of the AP Police Academy.",
   },
   {
     name: "Dr. Sankayyala Uday Shankar",
+    credentials: "MBBS, MD",
+    role: "Internal Medicine Specialist",
+    bio: "A central member of the medical team with significant responsibilities and contributions at Ahalya Nursing Home, Guntur, Andhra Pradesh.",
+    photo: "/images/team/uday-shankar.jpg",
     initials: "US",
-    role: "Internal Medicine Specialist, MBBS, MD",
-    bio: "Central member of a team with significant responsibilities and contributions at Ahalya Nursing Home - Guntur, AP.",
   },
   {
     name: "Shri. Thota Venkata Rao",
-    initials: "VR",
-    role: "DIG of Police & Joint Director",
-    bio: "AP Police Academy (now TSPA), Hyderabad, India.",
+    role: "DIG of Police & Joint Director (Retd)",
+    bio: "Former Deputy Inspector General of Police and Joint Director at the AP Police Academy (now TSPA), Hyderabad, India.",
+    photo: "/images/team/thota-venkata-rao.jpg",
+    initials: "TV",
+    link: { label: "Watch", url: "https://www.youtube.com/watch?v=Ht6893AIcR4" },
   },
   {
     name: "Shri. Peddiraju Chennu",
-    initials: "PC",
     role: "Chief Editor",
-    bio: "Executive Editor (News Head) at Tulasi Television, also served 2+ decades at Ushodaya Enterprises.",
+    bio: "Executive Editor (News Head) at Tulasi Television. Previously served over two decades at Ushodaya Enterprises (Eenadu Television), where his last role was Chief Editor.",
+    photo: "/images/team/peddiraju-chennu.jpg",
+    initials: "PC",
   },
   {
     name: "Dr. G Mahesh",
-    initials: "GM",
     role: "Consultant Cardiologist",
-    bio: "Consultant Cardiologist at Queen's NRI hospital, Visakhapatnam, Andhra Pradesh, working since 2017.",
+    bio: "Consultant Cardiologist at Queen's NRI Hospital, Visakhapatnam, Andhra Pradesh, where he has been practising since 2017.",
+    photo: "/images/team/g-mahesh.jpg",
+    initials: "GM",
   },
   {
     name: "Dr. B Vara Prasad",
+    role: "MD & Consultant Pathologist, PMC",
+    bio: "Managing Director and Consultant Pathologist at Prasad Medical Center (PMC), Collector Office Junction. Formerly Head of Department & Consultant Pathologist, Department of Pathology, CARE Hospitals, Visakhapatnam (2017–2018); Aga Khan Hospital, Kisumu, Kenya (2009–2017); and Nizam's Institute of Medical Sciences, Hyderabad (2003–2005). MBBS from Andhra Medical College, Visakhapatnam (1993–2000).",
+    photo: "/images/team/b-vara-prasad.jpg",
     initials: "VP",
-    role: "Managing Director, Consultant Pathologist",
-    bio: "Head of Department & Consultant Pathologist, Department of Pathology, CARE hospitals, Visakhapatnam.",
   },
   {
     name: "Dr. V Radha Madhavi",
-    initials: "RM",
+    credentials: "MBBS, MD (Paediatrics)",
     role: "Pediatrician & Neonatologist",
-    bio: "MBBS, MD (Paediatrics). Member Of PEDIATRIC INFECTIOUS DISEASES ACADEMY.",
+    bio: "Member of the Pediatric Infectious Diseases Academy (erstwhile IAP Infectious Diseases Chapter, reconstituted as the Pediatric Infectious Diseases Academy from 2022 — iapidc.org).",
+    photo: null,
+    initials: "RM",
   },
   {
     name: "Robin Rodriguez",
-    initials: "RR",
     role: "Retired Project Manager",
-    bio: "Served 40 plus years in the financial services industry. Small business owner specializing in interior design.",
+    bio: "Retired Project Manager with over 40 years in the financial services industry, and a small business owner specialising in interior and exterior retail products, outdoor landscape and interior design services. Personal interests include hiking, reading, gardening, and volunteer work for organisations serving the underprivileged.",
+    photo: null,
+    initials: "RR",
   },
   {
     name: "Capt Vineela Medikonda",
+    role: "Commercial Airline Captain",
+    bio: "A captain with a leading Indian commercial airline for the last 14 years and an engineering graduate from Hyderabad. A national champion in equestrian sports (2005) with the National Cadet Corps, an avid adventurer and traveller, and a vocal advocate for women's empowerment and gender equality.",
+    photo: null,
     initials: "VM",
-    role: "Captain",
-    bio: "Flying as a captain with a leading commercial airline in India for the last 14 years. National champion in equestrian sports.",
   },
 ];
 
+const PEOPLE_SCHEMA = TEAM_MEMBERS.map((m) => ({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: m.name,
+  jobTitle: m.role,
+  ...(m.photo ? { image: `${SITE_URL}${m.photo}` } : {}),
+  worksFor: { "@type": "NGO", name: SITE_NAME },
+}));
+
 export default function CoreTeam() {
   return (
-    <div className="min-h-screen bg-ngo-background">
-      {/* Hero Header */}
-      <section className="bg-gradient-to-br from-ngo-stone to-ngo-cream pt-28 pb-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-serif font-bold text-ngo-primary">
-              The Head Honchos
-            </h1>
-            <div className="w-20 h-1 bg-ngo-secondary rounded-full mx-auto mt-4 mb-6" />
-            <p className="text-lg text-ngo-muted leading-relaxed">
-              A diverse group of passionate individuals united by a single
-              mission: empowering communities and amplifying voices.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Team Grid */}
-      <section className="py-16 md:py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {TEAM_MEMBERS.map((member, index) => (
-              <div
-                key={index}
-                className="bg-ngo-card rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-ngo-border-light gold-glow focus-within:ring-2 focus-within:ring-ngo-secondary/50 flex flex-col"
-              >
-                {/* Avatar Placeholder with Gradient & Initials */}
-                <div
-                  className="h-56 w-full flex items-center justify-center relative"
-                  style={{
-                    background: AVATAR_GRADIENTS[index % AVATAR_GRADIENTS.length],
-                  }}
-                  aria-hidden="true"
-                >
-                  {/* Subtle pattern overlay */}
-                  <div
-                    className="absolute inset-0 opacity-10"
-                    style={{
-                      backgroundImage:
-                        "radial-gradient(circle at 25% 25%, rgba(255,255,255,0.2) 1px, transparent 1px)",
-                      backgroundSize: "20px 20px",
-                    }}
-                  />
-                  <span className="text-4xl font-serif font-bold text-white/90 relative z-10 select-none">
-                    {member.initials}
-                  </span>
-                </div>
-
-                {/* Card Content */}
-                <div className="p-6 text-center flex flex-col flex-grow">
-                  <h3 className="text-xl font-bold text-ngo-primary mb-1">
-                    {member.name}
-                  </h3>
-                  <p className="text-ngo-secondary font-medium text-sm mb-4">
-                    {member.role}
-                  </p>
-                  <p className="text-ngo-muted text-sm leading-relaxed flex-grow mb-6">
-                    {member.bio}
-                  </p>
-
-                  {/* Social Links */}
-                  <div className="flex justify-center gap-4 mt-auto">
-                    <a
-                      href="#"
-                      className="text-ngo-muted-light hover:text-ngo-secondary transition-colors focus:outline-none focus:ring-2 focus:ring-ngo-secondary/50 rounded-sm"
-                      aria-label={`Email ${member.name}`}
-                    >
-                      <Mail size={18} />
-                    </a>
-                    <a
-                      href="#"
-                      className="text-ngo-muted-light hover:text-ngo-secondary transition-colors focus:outline-none focus:ring-2 focus:ring-ngo-secondary/50 rounded-sm"
-                      aria-label={`${member.name}'s LinkedIn profile`}
-                    >
-                      <LinkedinIcon size={18} />
-                    </a>
-                    <a
-                      href="#"
-                      className="text-ngo-muted-light hover:text-ngo-secondary transition-colors focus:outline-none focus:ring-2 focus:ring-ngo-secondary/50 rounded-sm"
-                      aria-label={`${member.name}'s Twitter profile`}
-                    >
-                      <TwitterIcon size={18} />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    </div>
+    <>
+      <JsonLd data={PEOPLE_SCHEMA} />
+      <CoreTeamClient members={TEAM_MEMBERS} />
+    </>
   );
 }

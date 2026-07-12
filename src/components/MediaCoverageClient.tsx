@@ -1,16 +1,17 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import { 
-  Search, 
-  Grid, 
-  List, 
-  Calendar, 
-  ArrowRight, 
-  ExternalLink, 
+import {
+  Search,
+  Grid,
+  List,
+  Calendar,
+  ArrowRight,
+  ExternalLink,
   AlertCircle
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { themeFor } from "@/utils/themeMapper";
 
 interface MediaCoverageClientProps {
   initialArticles: Record<string, string>[];
@@ -24,17 +25,17 @@ export default function MediaCoverageClient({ initialArticles }: MediaCoverageCl
   // Helper to resolve images relative to /images/ folder
   const resolveImgSrc = (imageSrc: string | undefined): string => {
     if (!imageSrc) return "/images/vizag-helmet-drive.jpg"; // Default fallback
-    
+
     const src = imageSrc.trim();
-    
+
     // If it's an external url or absolute path from root, leave it as is
     if (src.startsWith("http://") || src.startsWith("https://") || src.startsWith("/")) {
       return src;
     }
-    
+
     // Remove starting './' if present
     const cleanSrc = src.startsWith("./") ? src.substring(2) : src;
-    
+
     // Build absolute path pointing to public/images/ folder
     return `/images/${cleanSrc}`;
   };
@@ -88,8 +89,8 @@ export default function MediaCoverageClient({ initialArticles }: MediaCoverageCl
                 <button
                   onClick={() => setViewMode("grid")}
                   className={`p-2 rounded-full transition-all cursor-pointer ${
-                    viewMode === "grid" 
-                      ? "bg-white text-ngo-secondary shadow-sm" 
+                    viewMode === "grid"
+                      ? "bg-white text-ngo-secondary shadow-sm"
                       : "text-ngo-muted-light hover:text-ngo-muted"
                   }`}
                   aria-label="Grid view"
@@ -99,8 +100,8 @@ export default function MediaCoverageClient({ initialArticles }: MediaCoverageCl
                 <button
                   onClick={() => setViewMode("list")}
                   className={`p-2 rounded-full transition-all cursor-pointer ${
-                    viewMode === "list" 
-                      ? "bg-white text-ngo-secondary shadow-sm" 
+                    viewMode === "list"
+                      ? "bg-white text-ngo-secondary shadow-sm"
                       : "text-ngo-muted-light hover:text-ngo-muted"
                   }`}
                   aria-label="List view"
@@ -149,6 +150,8 @@ export default function MediaCoverageClient({ initialArticles }: MediaCoverageCl
                   const date = article.date || "Recent";
                   const url = article.url || "#";
                   const imageUrl = resolveImgSrc(article.image_src || article.image);
+                  const theme = themeFor(article.category);
+                  const ThemeIcon = theme.icon;
 
                   return (
                     <motion.div
@@ -170,8 +173,13 @@ export default function MediaCoverageClient({ initialArticles }: MediaCoverageCl
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                               loading="lazy"
                             />
+                            {/* Themed category badge */}
+                            <span className={`absolute top-3 left-3 inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide ring-1 ring-inset backdrop-blur-sm ${theme.badge}`}>
+                              <ThemeIcon size={11} />
+                              {theme.label}
+                            </span>
                             {/* Accent Line */}
-                            <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-ngo-secondary to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                            <div className={`absolute bottom-0 left-0 right-0 h-1 opacity-0 group-hover:opacity-100 transition-opacity ${theme.accentBg}`} />
                           </div>
 
                           {/* Content Box */}
@@ -226,9 +234,15 @@ export default function MediaCoverageClient({ initialArticles }: MediaCoverageCl
                           {/* Content Column */}
                           <div className="flex-grow flex flex-col h-full w-full">
                             <div className="flex-grow">
-                              <span className="inline-block text-ngo-secondary uppercase tracking-wider font-bold text-xs mb-2">
-                                {source}
-                              </span>
+                              <div className="flex items-center gap-2 mb-2">
+                                <span className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide ring-1 ring-inset ${theme.badge}`}>
+                                  <ThemeIcon size={11} />
+                                  {theme.label}
+                                </span>
+                                <span className="inline-block text-ngo-secondary uppercase tracking-wider font-bold text-xs">
+                                  {source}
+                                </span>
+                              </div>
 
                               <h2 className="text-lg md:text-xl font-bold text-ngo-primary group-hover:text-ngo-secondary transition-colors mb-3 leading-snug">
                                 <a href={url} className="focus:outline-none" target={url.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer">
@@ -251,7 +265,7 @@ export default function MediaCoverageClient({ initialArticles }: MediaCoverageCl
                               </div>
 
                               <div className="flex items-center text-ngo-secondary font-bold text-xs gap-1">
-                                Read Full Coverage 
+                                Read Full Coverage
                                 <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                                 {url.startsWith("http") && <ExternalLink size={12} className="text-ngo-muted-light ml-1" />}
                               </div>

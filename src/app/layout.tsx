@@ -4,6 +4,8 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AccessibilityWidget from "@/components/AccessibilityWidget";
+import JsonLd from "@/components/JsonLd";
+import { ORG_SCHEMA, SITE_URL, SITE_NAME } from "@/utils/seo";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -18,13 +20,47 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Aap Sab Ki Awaaz | Empowering Communities",
-  description: "Join our mission to foster community engagement and raise rights awareness for Aap Sab Ki Awaaz and beyond.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Aap Sab Ki Awaaz | Empowering Communities",
+    template: "%s | Aap Sab Ki Awaaz",
+  },
+  description:
+    "ASKA empowers citizens through rights awareness, road safety drives, free medical camps, athlete support, and civic welfare across Andhra Pradesh, India.",
+  applicationName: SITE_NAME,
+  keywords: [
+    "ASKA",
+    "Aap Sab Ki Awaaz",
+    "NGO Andhra Pradesh",
+    "NGO Visakhapatnam",
+    "road safety",
+    "free medical camp",
+    "government schemes",
+    "civic welfare",
+  ],
+  authors: [{ name: SITE_NAME }],
+  alternates: { canonical: "/" },
   openGraph: {
     title: "Aap Sab Ki Awaaz",
-    description: "Community Empowerment: Access for All through Government Schemes",
+    description:
+      "Community Empowerment: Access for All through Government Schemes.",
+    url: SITE_URL,
+    siteName: SITE_NAME,
     type: "website",
     locale: "en_IN",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: SITE_NAME }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Aap Sab Ki Awaaz",
+    description:
+      "Community Empowerment: Access for All through Government Schemes.",
+    images: ["/og.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
 };
 
@@ -40,6 +76,7 @@ export default function RootLayout({
       className={`${inter.variable} ${playfair.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
+        <JsonLd data={ORG_SCHEMA} />
         <AccessibilityWidget />
         <Header />
         <main className="flex-1">
