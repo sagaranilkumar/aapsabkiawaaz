@@ -79,9 +79,9 @@ function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: str
 
 /* ── Stats Data ── */
 const IMPACT_STATS = [
-  { number: 400, suffix: "+", label: "Helmets Donated", icon: Shield },
-  { number: 1000, suffix: "+", label: "Lives Impacted", icon: Heart },
-  { number: 15, suffix: "+", label: "Campaigns Run", icon: Award },
+  { number: 1000, suffix: "+", label: "Helmets Donated", icon: Shield },
+  { number: 5000, suffix: "+", label: "Lives Impacted", icon: Heart },
+  { number: 50, suffix: "+", label: "Campaigns Run", icon: Award },
   { number: 5, suffix: "+", label: "Cities Reached", icon: MapPin },
 ];
 
