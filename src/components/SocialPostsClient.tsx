@@ -5,20 +5,19 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Calendar, ExternalLink, Hash, Globe, AlertCircle } from "lucide-react";
 import { themeFor, THEMES, Initiative } from "@/utils/themeMapper";
 
-interface Post extends Record<string, string> {}
+type Post = Record<string, string>;
 
 interface Props {
   initialPosts: Post[];
 }
 
-/** Per-platform soft character limits for the preview warning. */
 const PLATFORM_LIMIT: Record<string, number> = {
   twitter: 280,
   x: 280,
   instagram: 2200,
   linkedin: 3000,
   facebook: 63206,
-  all: 280, // most restrictive, so a post works everywhere
+  all: 280,
 };
 
 const STATUS_STYLE: Record<string, string> = {
@@ -66,7 +65,6 @@ export default function SocialPostsClient({ initialPosts }: Props) {
 
   return (
     <div className="min-h-screen bg-ngo-background">
-      {/* Hero */}
       <section className="relative overflow-hidden bg-gradient-to-br from-ngo-stone to-ngo-cream pt-28 pb-16">
         <div className="container mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
           <span className="mb-4 inline-flex items-center rounded-full border border-ngo-secondary/20 bg-ngo-secondary-subtle px-4 py-1.5 text-sm font-semibold text-ngo-secondary">
@@ -75,19 +73,14 @@ export default function SocialPostsClient({ initialPosts }: Props) {
           <h1 className="font-serif text-4xl font-bold text-ngo-primary md:text-5xl">Social Posts</h1>
           <div className="mx-auto mt-4 mb-6 h-1 w-20 rounded-full bg-ngo-secondary" />
           <p className="mx-auto max-w-2xl text-lg leading-relaxed text-ngo-muted">
-            Every card below is one row in{" "}
-            <code className="rounded bg-white px-1.5 py-0.5 text-sm text-ngo-primary ring-1 ring-ngo-border">
-              src/data/social-posts.csv
-            </code>
-            . Edit it in any spreadsheet — posts are themed by initiative automatically.
+            Follow our campaigns across road safety, healthcare, sports, and civic
+            welfare — every update from the movement, in one place.
           </p>
         </div>
       </section>
 
-      {/* Controls */}
       <section className="sticky top-[72px] z-10 border-b border-ngo-border-light glass-warm py-4">
         <div className="container mx-auto flex max-w-5xl flex-col gap-3 px-4 sm:px-6 lg:px-8">
-          {/* Status tabs */}
           <div className="flex flex-wrap items-center gap-2">
             {STATUS_TABS.map((s) => (
               <button
@@ -103,7 +96,6 @@ export default function SocialPostsClient({ initialPosts }: Props) {
               </button>
             ))}
           </div>
-          {/* Category chips */}
           <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={() => setCategory("all")}
@@ -136,7 +128,6 @@ export default function SocialPostsClient({ initialPosts }: Props) {
         </div>
       </section>
 
-      {/* Feed */}
       <section className="py-14">
         <div className="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           {filtered.length === 0 ? (
@@ -144,7 +135,7 @@ export default function SocialPostsClient({ initialPosts }: Props) {
               <AlertCircle size={40} className="mx-auto mb-4 text-ngo-secondary" />
               <h3 className="mb-2 font-serif text-xl font-bold text-ngo-primary">No posts match</h3>
               <p className="mx-auto max-w-md text-sm text-ngo-muted">
-                Try a different status or cause filter — or add a row to the CSV.
+                Try a different status or cause filter.
               </p>
             </div>
           ) : (
@@ -171,7 +162,6 @@ export default function SocialPostsClient({ initialPosts }: Props) {
                       transition={{ duration: 0.25 }}
                       className="flex flex-col overflow-hidden rounded-2xl border border-ngo-border-light bg-ngo-card shadow-sm transition-shadow hover:shadow-xl gold-glow"
                     >
-                      {/* Preview header */}
                       <div className="flex items-center justify-between border-b border-ngo-border-light px-4 py-2.5">
                         <span className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide ring-1 ring-inset ${theme.badge}`}>
                           <Icon size={11} />
