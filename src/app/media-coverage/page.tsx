@@ -11,8 +11,9 @@ export const metadata: Metadata = {
   description: "Read about our latest initiatives, road safety drives, free medical camps, and social impact in the news.",
   alternates: { canonical: "/media-coverage" },
   openGraph: {
-    title: "ASKA in the Media",
-    description: "Road safety, health camps, clean water & wins.",
+    title: "ASKA in the Media — Road Safety, Health Camps & Impact",
+    description:
+      "400 helmets to Vizag Home Guards, free medical camps, clean-water drives and athlete wins — Aap Sab Ki Awaaz in the news.",
     url: "/media-coverage",
     siteName: "Aap Sab Ki Awaaz",
     type: "website",
@@ -21,8 +22,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ASKA in the Media",
-    description: "Road safety, health camps, clean water & wins.",
+    title: "ASKA in the Media — Road Safety, Health Camps & Impact",
+    description: "Aap Sab Ki Awaaz in the news: helmets, health camps, clean water and athlete wins.",
     images: ["/images/vizag-helmet-drive.jpg"],
   },
 };

@@ -10,8 +10,9 @@ export const metadata: Metadata = {
     "Follow Aap Sab Ki Awaaz campaigns across road safety, healthcare, sports, and civic welfare — every update in one place.",
   alternates: { canonical: "/social" },
   openGraph: {
-    title: "ASKA Campaigns",
-    description: "Road safety, health, sports & civic — one place.",
+    title: "ASKA Campaigns — Follow the Movement",
+    description:
+      "Road safety, healthcare, sports and civic welfare — every Aap Sab Ki Awaaz campaign update in one place.",
     url: "/social",
     siteName: "Aap Sab Ki Awaaz",
     type: "website",
@@ -20,8 +21,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ASKA Campaigns",
-    description: "Every campaign update, in one place.",
+    title: "ASKA Campaigns — Follow the Movement",
+    description: "Every Aap Sab Ki Awaaz campaign update in one place.",
     images: ["/og-social.png"],
   },
 };

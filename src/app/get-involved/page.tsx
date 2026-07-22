@@ -6,8 +6,9 @@ export const metadata: Metadata = {
   description: "Join hands with Aap Sab Ki Awaaz NGO. Volunteer for traffic awareness, mentor athletes, sponsor medical camps, or support community developments.",
   alternates: { canonical: "/get-involved" },
   openGraph: {
-    title: "Get Involved with ASKA",
-    description: "Volunteer, mentor, or sponsor a cause.",
+    title: "Get Involved with Aap Sab Ki Awaaz",
+    description:
+      "Volunteer, mentor athletes, or sponsor medical camps and road-safety drives. Join the movement across Andhra Pradesh.",
     url: "/get-involved",
     siteName: "Aap Sab Ki Awaaz",
     type: "website",
@@ -16,8 +17,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Get Involved with ASKA",
-    description: "Volunteer, mentor, or sponsor a cause.",
+    title: "Get Involved with Aap Sab Ki Awaaz",
+    description: "Volunteer, mentor, or sponsor — join the movement.",
     images: ["/og-get-involved.png"],
   },
 };

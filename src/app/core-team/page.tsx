@@ -9,8 +9,9 @@ export const metadata: Metadata = {
     "Meet the leadership and advisory board of Aap Sab Ki Awaaz — decorated defence officers, jurists, physicians, and civic leaders driving community change.",
   alternates: { canonical: "/core-team" },
   openGraph: {
-    title: "The Head Honchos",
-    description: "Meet the ASKA leadership & advisory board.",
+    title: "The Head Honchos — ASKA Leadership & Advisory Board",
+    description:
+      "Decorated defence officers, a former High Court Chief Justice, senior physicians and civic leaders — the people behind Aap Sab Ki Awaaz.",
     url: "/core-team",
     siteName: "Aap Sab Ki Awaaz",
     type: "website",
@@ -19,8 +20,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Head Honchos",
-    description: "Meet the ASKA leadership & advisory board.",
+    title: "The Head Honchos — ASKA Leadership & Advisory Board",
+    description: "The decorated officers, jurists and physicians behind Aap Sab Ki Awaaz.",
     images: ["/og-core-team.jpg"],
   },
 };

@@ -42,7 +42,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   openGraph: {
     title: "Aap Sab Ki Awaaz",
-    description: "Empowering communities across Andhra Pradesh.",
+    description:
+      "Community Empowerment: Access for All through Government Schemes.",
     url: SITE_URL,
     siteName: SITE_NAME,
     type: "website",
@@ -52,7 +53,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Aap Sab Ki Awaaz",
-    description: "Empowering communities across Andhra Pradesh.",
+    description:
+      "Community Empowerment: Access for All through Government Schemes.",
     images: ["/og.png"],
   },
   robots: {
