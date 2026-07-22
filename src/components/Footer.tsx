@@ -31,29 +31,12 @@ export default function Footer() {
               Empowering communities through rights awareness and government
               schemes for a prosperous future.
             </p>
-            <div className="flex items-center gap-2 pt-2">
-              <a
-                href="#"
-                className="text-slate-400 hover:text-ngo-secondary hover:bg-white/10 rounded-full p-2 transition-all duration-200 font-medium text-sm"
-                aria-label="Facebook"
-              >
-                FB
-              </a>
-              <a
-                href="#"
-                className="text-slate-400 hover:text-ngo-secondary hover:bg-white/10 rounded-full p-2 transition-all duration-200 font-medium text-sm"
-                aria-label="Twitter"
-              >
-                TW
-              </a>
-              <a
-                href="#"
-                className="text-slate-400 hover:text-ngo-secondary hover:bg-white/10 rounded-full p-2 transition-all duration-200 font-medium text-sm"
-                aria-label="Instagram"
-              >
-                IG
-              </a>
-            </div>
+            <a
+              href="mailto:kiran@aapsabkiawaaz.org"
+              className="inline-block text-sm font-semibold text-ngo-secondary hover:text-ngo-secondary-light transition-colors pt-2 focus:outline-none focus:underline"
+            >
+              kiran@aapsabkiawaaz.org
+            </a>
           </div>
 
           {/* Quick Links */}
@@ -63,27 +46,28 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3">
               <li>
-                <Link
-                  href="/"
-                  className="text-slate-400 hover:text-ngo-secondary transition-colors duration-200 focus:outline-none focus:underline hover:underline underline-offset-4"
-                >
+                <Link href="/" className="text-slate-400 hover:text-ngo-secondary transition-colors duration-200 focus:outline-none focus:underline hover:underline underline-offset-4">
                   Home
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/core-team"
-                  className="text-slate-400 hover:text-ngo-secondary transition-colors duration-200 focus:outline-none focus:underline hover:underline underline-offset-4"
-                >
+                <Link href="/core-team" className="text-slate-400 hover:text-ngo-secondary transition-colors duration-200 focus:outline-none focus:underline hover:underline underline-offset-4">
                   Core Team
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/media-coverage"
-                  className="text-slate-400 hover:text-ngo-secondary transition-colors duration-200 focus:outline-none focus:underline hover:underline underline-offset-4"
-                >
+                <Link href="/media-coverage" className="text-slate-400 hover:text-ngo-secondary transition-colors duration-200 focus:outline-none focus:underline hover:underline underline-offset-4">
                   Media Coverage
+                </Link>
+              </li>
+              <li>
+                <Link href="/social" className="text-slate-400 hover:text-ngo-secondary transition-colors duration-200 focus:outline-none focus:underline hover:underline underline-offset-4">
+                  Social
+                </Link>
+              </li>
+              <li>
+                <Link href="/get-involved" className="text-slate-400 hover:text-ngo-secondary transition-colors duration-200 focus:outline-none focus:underline hover:underline underline-offset-4">
+                  Get Involved
                 </Link>
               </li>
             </ul>
@@ -96,27 +80,18 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3">
               <li>
-                <Link
-                  href="#"
-                  className="text-slate-400 hover:text-ngo-secondary transition-colors duration-200 focus:outline-none focus:underline hover:underline underline-offset-4"
-                >
+                <a href="https://www.myscheme.gov.in" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-ngo-secondary transition-colors duration-200 focus:outline-none focus:underline hover:underline underline-offset-4">
                   Government Schemes
-                </Link>
+                </a>
               </li>
               <li>
-                <Link
-                  href="#"
-                  className="text-slate-400 hover:text-ngo-secondary transition-colors duration-200 focus:outline-none focus:underline hover:underline underline-offset-4"
-                >
+                <a href="https://nalsa.gov.in" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-ngo-secondary transition-colors duration-200 focus:outline-none focus:underline hover:underline underline-offset-4">
                   Know Your Rights
-                </Link>
+                </a>
               </li>
               <li>
-                <Link
-                  href="#"
-                  className="text-slate-400 hover:text-ngo-secondary transition-colors duration-200 focus:outline-none focus:underline hover:underline underline-offset-4"
-                >
-                  Volunteer Guidelines
+                <Link href="/get-involved" className="text-slate-400 hover:text-ngo-secondary transition-colors duration-200 focus:outline-none focus:underline hover:underline underline-offset-4">
+                  Volunteer &amp; Support
                 </Link>
               </li>
             </ul>
@@ -129,20 +104,14 @@ export default function Footer() {
             </h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <MapPin
-                  className="text-ngo-secondary shrink-0 mt-0.5"
-                  size={18}
-                />
+                <MapPin className="text-ngo-secondary shrink-0 mt-0.5" size={18} />
                 <span className="text-sm leading-relaxed text-slate-400">
                   53-20-16/11/1, P AND T Colony, Chaitanya Nagar, Maddilapalem,
                   Seethamadhara, Visakhapatnam, AP - 530 013
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <Clock
-                  className="text-ngo-secondary shrink-0 mt-0.5"
-                  size={18}
-                />
+                <Clock className="text-ngo-secondary shrink-0 mt-0.5" size={18} />
                 <div className="text-sm">
                   <span className="font-semibold block text-slate-200">
                     Business Hours:
@@ -162,16 +131,10 @@ export default function Footer() {
             &copy; {currentYear} Aap Sab Ki Awaaz. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm">
-            <Link
-              href="#"
-              className="text-slate-400 hover:text-ngo-secondary transition-colors duration-200 focus:outline-none focus:underline"
-            >
+            <Link href="/privacy" className="text-slate-400 hover:text-ngo-secondary transition-colors duration-200 focus:outline-none focus:underline">
               Privacy Policy
             </Link>
-            <Link
-              href="#"
-              className="text-slate-400 hover:text-ngo-secondary transition-colors duration-200 focus:outline-none focus:underline"
-            >
+            <Link href="/terms" className="text-slate-400 hover:text-ngo-secondary transition-colors duration-200 focus:outline-none focus:underline">
               Terms of Service
             </Link>
           </div>
