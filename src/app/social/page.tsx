@@ -7,8 +7,24 @@ import { parseCSV } from "@/utils/csvParser";
 export const metadata: Metadata = {
   title: "Social Posts",
   description:
-    "Campaign-ready social posts for Aap Sab Ki Awaaz — themed by initiative and editable via a simple CSV.",
+    "Follow Aap Sab Ki Awaaz campaigns across road safety, healthcare, sports, and civic welfare — every update in one place.",
   alternates: { canonical: "/social" },
+  openGraph: {
+    title: "ASKA Campaigns — Follow the Movement",
+    description:
+      "Road safety, healthcare, sports and civic welfare — every Aap Sab Ki Awaaz campaign update in one place.",
+    url: "/social",
+    siteName: "Aap Sab Ki Awaaz",
+    type: "website",
+    locale: "en_IN",
+    images: [{ url: "/og-social.png", width: 1200, height: 630, alt: "Aap Sab Ki Awaaz campaigns across road safety, health, sports and civic welfare" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ASKA Campaigns — Follow the Movement",
+    description: "Every Aap Sab Ki Awaaz campaign update in one place.",
+    images: ["/og-social.png"],
+  },
 };
 
 const FALLBACK_POSTS: Record<string, string>[] = [

@@ -8,13 +8,24 @@ export const metadata: Metadata = {
   description:
     "Meet the leadership and advisory board of Aap Sab Ki Awaaz — decorated defence officers, jurists, physicians, and civic leaders driving community change.",
   alternates: { canonical: "/core-team" },
+  openGraph: {
+    title: "The Head Honchos — ASKA Leadership & Advisory Board",
+    description:
+      "Decorated defence officers, a former High Court Chief Justice, senior physicians and civic leaders — the people behind Aap Sab Ki Awaaz.",
+    url: "/core-team",
+    siteName: "Aap Sab Ki Awaaz",
+    type: "website",
+    locale: "en_IN",
+    images: [{ url: "/og-core-team.jpg", width: 1200, height: 630, alt: "The Aap Sab Ki Awaaz leadership and advisory board" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Head Honchos — ASKA Leadership & Advisory Board",
+    description: "The decorated officers, jurists and physicians behind Aap Sab Ki Awaaz.",
+    images: ["/og-core-team.jpg"],
+  },
 };
 
-/**
- * Photos are self-hosted from /public/images/team/.
- * Download the 9 source JPGs (see project notes) into that folder with the
- * matching slug filenames. Members without a photo fall back to gradient initials.
- */
 const TEAM_MEMBERS: Member[] = [
   {
     name: "Lt Gen K S Rao",

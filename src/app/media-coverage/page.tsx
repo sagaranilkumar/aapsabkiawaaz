@@ -10,6 +10,22 @@ export const metadata: Metadata = {
   title: "Media Coverage",
   description: "Read about our latest initiatives, road safety drives, free medical camps, and social impact in the news.",
   alternates: { canonical: "/media-coverage" },
+  openGraph: {
+    title: "ASKA in the Media — Road Safety, Health Camps & Impact",
+    description:
+      "400 helmets to Vizag Home Guards, free medical camps, clean-water drives and athlete wins — Aap Sab Ki Awaaz in the news.",
+    url: "/media-coverage",
+    siteName: "Aap Sab Ki Awaaz",
+    type: "website",
+    locale: "en_IN",
+    images: [{ url: "/images/vizag-helmet-drive.jpg", width: 1200, height: 630, alt: "ASKA road-safety helmet drive in Visakhapatnam" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ASKA in the Media — Road Safety, Health Camps & Impact",
+    description: "Aap Sab Ki Awaaz in the news: helmets, health camps, clean water and athlete wins.",
+    images: ["/images/vizag-helmet-drive.jpg"],
+  },
 };
 
 const FALLBACK_ARTICLES = [
@@ -92,7 +108,6 @@ export default function MediaCoverage() {
     }
   } catch (error) {
     console.error("Error reading or parsing media.csv server-side:", error);
-    // Fallback to FALLBACK_ARTICLES remains active
   }
 
   return (
