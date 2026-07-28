@@ -91,6 +91,24 @@ const FALLBACK_ARTICLES = [
     url: "https://youtube.com/shorts/2WhwCvrKUUk",
     image_src: "student-drunk-drive-counseling.jpg",
     category: "road-safety"
+  },
+  {
+    title: "Bharatiyam - Kargil Vijay Diwas Poster Unveiled by District Principal Judge",
+    source: "Sakshi (Visakhapatnam East, Page 11)",
+    date: "July 24, 2026",
+    description: "District Principal Judge Chinnamsetty Raju unveiled the poster for Bharatiyam, the national integration cultural program marking Kargil Vijay Diwas at VMRDA Childrens Arena, Siripuram. Aap Sab Ki Awaaz General Secretary Bavisetti Kiran Kumar and Patron Dr. P. Subramanyam joined the launch, announcing felicitation and financial support for the families of martyred soldiers.",
+    url: "https://epaper.sakshi.com/",
+    image_src: "bharatiyam-sakshi-coverage.jpg",
+    category: "civic"
+  },
+  {
+    title: "Bharatiyam: National Integration Cultural Program Marks Kargil Vijay Diwas in Visakhapatnam",
+    source: "ACME / Aap Sab Ki Awaaz",
+    date: "July 25, 2026",
+    description: "Held on 25 July 2026 at the VMRDA Childrens Arena with VMRDA Chairperson Shri M V Pranav Gopal as Chief Guest, Bharatiyam featured a live performance by the Eastern Naval Command Naval Symphony and cultural showcases by schools and academies across the city. ACME and Aap Sab Ki Awaaz honoured Dr. Chandra Shekhar, President of Veterans (AP & Telangana), and the wives of late CPO Ashok Kumar Singh and late L Naik Kolli Purna Ramachandra Reddy.",
+    url: "#",
+    image_src: "bharatiyam-invitation.jpg",
+    category: "civic"
   }
 ];
 

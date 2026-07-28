@@ -28,13 +28,16 @@ const STATUS_STYLE: Record<string, string> = {
 
 const STATUS_TABS = ["all", "published", "scheduled", "draft"] as const;
 
-function resolveImg(src?: string): string | null {
+function resolveAsset(src: string | undefined, folder: string): string | null {
   if (!src) return null;
   const s = src.trim();
   if (!s) return null;
   if (s.startsWith("http") || s.startsWith("/")) return s;
-  return `/images/${s.replace(/^\.?\//, "")}`;
+  return `/${folder}/${s.replace(/^\.?\//, "")}`;
 }
+
+const resolveImg = (src?: string) => resolveAsset(src, "images");
+const resolveVideo = (src?: string) => resolveAsset(src, "videos");
 
 export default function SocialPostsClient({ initialPosts }: Props) {
   const [status, setStatus] = useState<(typeof STATUS_TABS)[number]>("all");
@@ -145,6 +148,7 @@ export default function SocialPostsClient({ initialPosts }: Props) {
                   const theme = themeFor(p.category);
                   const Icon = theme.icon;
                   const img = resolveImg(p.image_src);
+                  const video = resolveVideo(p.video_src);
                   const platform = (p.platform || "all").toLowerCase();
                   const limit = PLATFORM_LIMIT[platform] ?? 280;
                   const len = (p.post_text || "").length;
@@ -173,11 +177,24 @@ export default function SocialPostsClient({ initialPosts }: Props) {
                         </span>
                       </div>
 
-                      {img && (
-                        <div className="h-52 w-full overflow-hidden bg-ngo-stone/30">
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img src={img} alt="" loading="lazy" className="h-full w-full object-cover" />
+                      {video ? (
+                        <div className="h-52 w-full overflow-hidden bg-black">
+                          <video
+                            src={video}
+                            poster={img ?? undefined}
+                            controls
+                            playsInline
+                            preload="metadata"
+                            className="h-full w-full object-cover"
+                          />
                         </div>
+                      ) : (
+                        img && (
+                          <div className="h-52 w-full overflow-hidden bg-ngo-stone/30">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img src={img} alt="" loading="lazy" className="h-full w-full object-cover" />
+                          </div>
+                        )
                       )}
 
                       <div className="flex flex-1 flex-col p-5">
