@@ -74,6 +74,26 @@ export function parseCSV(text: string): Record<string, string>[] {
 }
 
 /**
+ * Parse a CSV date to UTC midnight, returning NaN if it is unreadable.
+ *
+ * The datasets use two formats — "2026-07-25" (social) and "July 25, 2026"
+ * (media). `Date.parse` reads the first as UTC and the second as local time,
+ * so comparing or formatting them raw shifts dates by the timezone offset.
+ * Normalizing both to UTC midnight keeps sorting and display consistent.
+ */
+export function parseRowDate(raw?: string): number {
+  const value = (raw || "").trim();
+  if (!value) return NaN;
+
+  const iso = /^(\d{4})-(\d{2})-(\d{2})/.exec(value);
+  if (iso) return Date.UTC(Number(iso[1]), Number(iso[2]) - 1, Number(iso[3]));
+
+  const local = new Date(value);
+  if (Number.isNaN(local.getTime())) return NaN;
+  return Date.UTC(local.getFullYear(), local.getMonth(), local.getDate());
+}
+
+/**
  * Order data rows newest-first so the most recent entry always leads the page.
  * Datasets name their date column differently ("date" for media coverage,
  * "publish_date" for social posts), so the first field that holds a parsable
@@ -85,9 +105,7 @@ export function sortByDateDesc(
 ): Record<string, string>[] {
   const stamp = (row: Record<string, string>): number => {
     for (const field of fields) {
-      const raw = (row[field] || "").trim();
-      if (!raw) continue;
-      const parsed = Date.parse(raw);
+      const parsed = parseRowDate(row[field]);
       if (!Number.isNaN(parsed)) return parsed;
     }
     return Number.NEGATIVE_INFINITY;
