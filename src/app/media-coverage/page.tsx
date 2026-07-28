@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import fs from "fs";
 import path from "path";
 import MediaCoverageClient from "@/components/MediaCoverageClient";
-import { parseCSV } from "@/utils/csvParser";
+import { parseCSV, sortByDateDesc } from "@/utils/csvParser";
 import JsonLd from "@/components/JsonLd";
 import { newsArticleSchema } from "@/utils/seo";
 
@@ -128,10 +128,13 @@ export default function MediaCoverage() {
     console.error("Error reading or parsing media.csv server-side:", error);
   }
 
+  // Newest coverage always leads the page, whatever order the CSV rows sit in.
+  const articles = sortByDateDesc(initialArticles);
+
   return (
     <>
-      <JsonLd data={newsArticleSchema(initialArticles)} />
-      <MediaCoverageClient initialArticles={initialArticles} />
+      <JsonLd data={newsArticleSchema(articles)} />
+      <MediaCoverageClient initialArticles={articles} />
     </>
   );
 }

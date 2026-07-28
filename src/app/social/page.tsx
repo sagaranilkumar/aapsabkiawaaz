@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import fs from "fs";
 import path from "path";
 import SocialPostsClient from "@/components/SocialPostsClient";
-import { parseCSV } from "@/utils/csvParser";
+import { parseCSV, sortByDateDesc } from "@/utils/csvParser";
 
 export const metadata: Metadata = {
   title: "Social Posts",
@@ -59,5 +59,6 @@ export default function SocialPage() {
     console.error("Error reading social-posts.csv server-side:", error);
   }
 
-  return <SocialPostsClient initialPosts={posts} />;
+  // Newest post always leads the feed, whatever order the CSV rows sit in.
+  return <SocialPostsClient initialPosts={sortByDateDesc(posts)} />;
 }

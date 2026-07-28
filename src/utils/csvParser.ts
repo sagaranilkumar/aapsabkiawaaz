@@ -73,6 +73,29 @@ export function parseCSV(text: string): Record<string, string>[] {
   return data;
 }
 
+/**
+ * Order data rows newest-first so the most recent entry always leads the page.
+ * Datasets name their date column differently ("date" for media coverage,
+ * "publish_date" for social posts), so the first field that holds a parsable
+ * date wins. Undated rows sink to the bottom; ties keep their CSV order.
+ */
+export function sortByDateDesc(
+  rows: Record<string, string>[],
+  fields: string[] = ["publish_date", "date"]
+): Record<string, string>[] {
+  const stamp = (row: Record<string, string>): number => {
+    for (const field of fields) {
+      const raw = (row[field] || "").trim();
+      if (!raw) continue;
+      const parsed = Date.parse(raw);
+      if (!Number.isNaN(parsed)) return parsed;
+    }
+    return Number.NEGATIVE_INFINITY;
+  };
+
+  return [...rows].sort((a, b) => stamp(b) - stamp(a));
+}
+
 // Convert objects back to CSV string for the raw preview editor
 export function arrayToCSV(arr: Record<string, string>[]): string {
   if (arr.length === 0) return "";
